@@ -3,12 +3,10 @@ import { useState } from "react";
 
 export default function NewPost() {
   const [content, setContent] = useState("");
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   //Hide component if we're not logged in
-  if (!session || !session.user) {
-    return null;
-  }
+  if (!session || !session.user) return null;
 
   return (
     <form
@@ -21,14 +19,15 @@ export default function NewPost() {
         }
 
         fetch("/api/post", {
-          body: JSON.stringify({
-            content,
-          }),
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          method: "POST",
+          body: JSON.stringify({
+            content,
+          }),
         });
+        console.log(session.user.email);
       }}
     >
       <div className="flex">

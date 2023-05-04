@@ -1,9 +1,10 @@
 import NextAuth from "next-auth";
+import { NextAuthOptions } from "next-auth";
 import EmailProvider from "next-auth/providers/email";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "lib/prisma";
 
-export default NextAuth({
+export const authOptions = {
   providers: [
     EmailProvider({
       server: process.env.EMAIL_SERVER,
@@ -19,6 +20,15 @@ export default NextAuth({
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
 
-  debug: true,
   adapter: PrismaAdapter(prisma),
-});
+
+  callbacks: {
+    session: async ({ session, user }) => {
+      session.user.id = user.id;
+      session.user.username = user.username;
+      return Promise.resolve(session);
+    },
+  },
+};
+
+export default NextAuth(authOptions);

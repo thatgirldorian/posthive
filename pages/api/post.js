@@ -1,14 +1,11 @@
 import prisma from "lib/prisma";
-import { getSession } from "next-auth/react";
+import { authOptions } from "pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth/next";
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(501).end();
-  }
+  const session = await getServerSession({ req, res, authOptions });
 
-  const session = await getSession({ req });
-
-  if (session) {
+  if (!session) {
     return res
       .status(401)
       .json({ message: "You're not currently logged in. :(" });
@@ -20,20 +17,10 @@ export default async function handler(req, res) {
     },
   });
 
-  if (!user) {
-    return res.status(401).json({ message: "User not found. :(" });
-  }
-
-  if (req.method === "POST") {
-    await prisma.post.create({
-      data: {
-        content: req.body.content,
-        author: {
-          connect: { id: user.id },
-        },
-      },
-    });
-    res.end();
-    return;
-  }
+  if (!user)
+    if (req.method === "POST") {
+      console.log("hey");
+      res.end();
+      return;
+    }
 }
