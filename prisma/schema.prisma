@@ -58,4 +58,14 @@ model User {
   updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
+  posts         Post[]
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  parent    Int?
+  createdAt DateTime @default(now())
+  content   String?
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
 }
