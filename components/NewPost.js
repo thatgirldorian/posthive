@@ -20,7 +20,15 @@ export default function NewPost() {
           return;
         }
 
-        alert(content);
+        fetch("/api/post", {
+          body: JSON.stringify({
+            content,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        });
       }}
     >
       <div className="flex">
