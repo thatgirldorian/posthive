@@ -1,9 +1,13 @@
 import prisma from "lib/prisma";
-import { authOptions } from "pages/api/auth/[...nextauth]";
+import { authOptions } from "./auth/[...nextauth]";
 import { getServerSession } from "next-auth/next";
 
 export default async function handler(req, res) {
-  const session = await getServerSession({ req, res, authOptions });
+  if (req.method !== "POST") {
+    return res.status(501).end();
+  }
+
+  const session = await getServerSession(req, res, authOptions);
 
   if (!session) {
     return res
@@ -17,10 +21,20 @@ export default async function handler(req, res) {
     },
   });
 
-  if (!user)
-    if (req.method === "POST") {
-      console.log("hey");
-      res.end();
-      return;
-    }
+  if (!user) {
+    return res.status(401).json({ message: "User not found. :(" });
+  }
+
+  if (req.method === "POST") {
+    await prisma.post.create({
+      data: {
+        content: req.body.content,
+        author: {
+          connect: { id: user.id },
+        },
+      },
+    });
+    res.end();
+    return;
+  }
 }
