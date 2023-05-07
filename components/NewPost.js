@@ -1,9 +1,11 @@
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function NewPost() {
   const [content, setContent] = useState("");
   const { data: session } = useSession();
+  const router = useRouter();
 
   //Hide component if we're not logged in
   if (!session || !session.user) return null;
@@ -18,7 +20,7 @@ export default function NewPost() {
           return;
         }
 
-        fetch("/api/post", {
+        await fetch("/api/post", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -27,7 +29,7 @@ export default function NewPost() {
             content,
           }),
         });
-        console.log(session.user.email);
+        router.reload(window.location.pathname);
       }}
     >
       <div className="flex">
