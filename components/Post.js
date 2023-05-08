@@ -1,10 +1,10 @@
-import timeago from "lib/timeago";
+import timeAgo from "lib/timeago";
 
 export default function Post({ post }) {
   return (
     <p>
       {post.content}
-      {timeago.format(new Date(post.createdAt))}
+      {timeAgo.format(new Date(post.createdAt))}
     </p>
   );
 }
