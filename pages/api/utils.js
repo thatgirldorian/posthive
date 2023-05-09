@@ -20,10 +20,50 @@ export default async function handler(req, res) {
     });
   }
 
-  if (req.body.task === "generate_users_and_posts") {
+  if (req.body.task === "generate_one_post") {
+    const users = await prisma.user.findMany({});
+
+    const randomIndex = Math.floor(Math.random() * users.length);
+    const user = users[randomIndex];
+
+    await prisma.post.create({
+      data: {
+        content: faker.hacker.phrase(),
+        author: {
+          connect: { id: user.id },
+        },
+      },
+    });
   }
 
-  if (req.body.task === "generate_one_post") {
+  if (req.body.task === "generate_users_and_posts") {
+    let count = 0;
+
+    while (count < 7) {
+      await prisma.user.create({
+        data: {
+          name: faker.internet.userName().toLowerCase(),
+          email: faker.internet.email().toLowerCase(),
+          image: faker.internet.avatar(),
+        },
+      });
+
+      count++;
+    }
+
+    //create 1 new post for each fake user
+    const users = await prisma.user.findMany({});
+
+    users.forEach(async (user) => {
+      await prisma.post.create({
+        data: {
+          content: faker.hacker.phrase(),
+          author: {
+            connect: { id: user.id },
+          },
+        },
+      });
+    });
   }
 
   res.end();
