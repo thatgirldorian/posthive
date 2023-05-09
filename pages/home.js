@@ -18,6 +18,11 @@ export default function Home({ posts }) {
     router.push("/");
   }
 
+  //if a person doesn't have a username set but are logged in
+  if (session && !session.user.name) {
+    router.push("/setup");
+  }
+
   if (status === "loading") {
     return <p>Loading...</p>;
   }

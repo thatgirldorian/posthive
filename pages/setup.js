@@ -16,7 +16,7 @@ export default function Setup() {
   }
 
   return (
-    <main className=" bg-white  m">
+    <main className=" bg-white">
       <form
         className="pt-10 h-screen ml-20 "
         onSubmit={async (e) => {
