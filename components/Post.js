@@ -20,7 +20,7 @@ export default function Post({ post }) {
             </div>
             <div className="ml-3 -mt-6">
               <p>
-                <Link href={`/${post.author.name}`}>
+                <Link href={`/${post.author.name}/status/${post.id}`}>
                   <span className="text-base font-medium leading-6 color-primary hover:underline">
                     {post.author.name}{" "}
                   </span>
