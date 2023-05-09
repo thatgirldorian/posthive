@@ -3,17 +3,42 @@ import Image from "next/image";
 
 export default function Post({ post }) {
   return (
-    <p>
-      {post.author.image && (
-        <Image
-          src={post.author.image}
-          alt={post.author.name}
-          width={40}
-          height={40}
-        />
-      )}
-      {timeAgo.format(new Date(post.createdAt))} {post.author.name}{" "}
-      {post.content}
-    </p>
+    <div className="mb-4">
+      <div className="flex flex-shrink-0 p-4 pb-0">
+        <div className="flex-shrink-0 block group">
+          <div className="flex items-center">
+            <div>
+              {post.author.image && (
+                <Image
+                  src={post.author.image}
+                  alt={post.author.name}
+                  width={40}
+                  height={40}
+                />
+              )}
+            </div>
+            <div className="ml-3 -mt-6">
+              <p>
+                <a>
+                  <span className="text-base font-medium leading-6 color-primary hover:underline">
+                    {post.author.name}{" "}
+                  </span>
+                </a>
+                <span className="pl-1 text-sm font-light leading-5 color-dimmed">
+                  <a className="hover:underline">
+                    {timeAgo.format(new Date(post.createdAt))}
+                  </a>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="pl-16 -mt-6">
+        <p className="flex-shrink pl-1 pr-2 text-base font-normal color-primary width-auto">
+          {post.content}
+        </p>
+      </div>
+    </div>
   );
 }
