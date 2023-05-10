@@ -18,14 +18,21 @@ export default function Home() {
 
   return (
     <main
-      className={`flex  bg-white min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+      className={` bg-white min-h-screen flex-col items-center justify-between py-24 px-12 ${inter.className}`}
     >
-      <a
-        className="border-[2px] rounded text-[#f2e8cf] bg-[#386641] px-6 py-1 border-[#386641]"
-        href="/api/auth/signin"
-      >
-        Login
-      </a>
+      <div className="mt-10">
+        <div className="text-center py-10 border">
+          <h2 className="mb-10 font-medium text-[18px]">
+            Join all the cool conversations!
+          </h2>
+          <a
+            className="border-[1px] px-8 py-2 font-bold rounded-full color-accent-contrast bg-color-accent hover:bg-color-accent-hover-darker"
+            href="/api/auth/signin"
+          >
+            Login
+          </a>
+        </div>
+      </div>
     </main>
   );
 }
