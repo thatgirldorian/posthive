@@ -6,7 +6,7 @@ import Posts from "components/Posts";
 export default function UserProfile({ name, posts }) {
   return (
     <div className="bg-white h-screen items-center justify-between px-24 pt-4">
-      <p className="font-medium text-[24px] p-5">{name} profile</p>
+      <p className="font-medium text-[24px] p-5">{name}'s profile</p>
       <Posts posts={posts} />
     </div>
   );
