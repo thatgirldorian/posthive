@@ -19,7 +19,7 @@ export default function SinglePost({ post }) {
             href="#"
             className="flex items-center justify-end w-fit px-3 py-2 mt-1 font-medium leading-6 border-[1px] rounded-full ml-auto"
             onClick={async () => {
-              const response = await fetch("/api/post", {
+              const res = await fetch("/api/post", {
                 body: JSON.stringify({
                   id: post.id,
                 }),
@@ -29,10 +29,10 @@ export default function SinglePost({ post }) {
                 method: "DELETE",
               });
 
-              if (response.status === 401) {
+              if (res.status === 401) {
                 alert("Access is authorized :(");
               }
-              if (response.status === 200) {
+              if (res.status === 200) {
                 router.push("/home");
               }
             }}
