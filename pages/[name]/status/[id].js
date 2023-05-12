@@ -17,7 +17,7 @@ export default function SinglePost({ post }) {
         <div className="flex-1 py-2 m-2 text-center">
           <a
             href="#"
-            className="flex items-center w-12 px-3 py-2 mt-1 text-base font-medium leading-6 text-gray-500 rounded-full hover:bg-color-accent-hover hover:color-accent-hover"
+            className="flex items-center justify-end w-fit px-3 py-2 mt-1 font-medium leading-6 border-[1px] rounded-full ml-auto"
             onClick={async () => {
               const response = await fetch("/api/post", {
                 body: JSON.stringify({
