@@ -2,7 +2,6 @@ import Post from "components/Post";
 import { getPost } from "lib/data.js";
 import prisma from "lib/prisma";
 import { useSession } from "next-auth/react";
-import { headers } from "next/dist/client/components/headers";
 import { useRouter } from "next/router";
 
 export default function SinglePost({ post }) {
@@ -30,10 +29,11 @@ export default function SinglePost({ post }) {
               });
 
               if (res.status === 401) {
-                alert("Access is authorized :(");
+                alert("Access is unauthorized :(");
               }
               if (res.status === 200) {
                 router.push("/home");
+                return;
               }
             }}
           >

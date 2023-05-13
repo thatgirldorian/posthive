@@ -16,6 +16,7 @@ export default function Home({ posts }) {
 
   if (!session) {
     router.push("/");
+    return;
   }
 
   //if a person doesn't have a username set but are logged in

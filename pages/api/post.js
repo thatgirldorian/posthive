@@ -37,6 +37,7 @@ export default async function handler(req, res) {
     res.end();
     return;
   }
+
   if (req.method === "DELETE") {
     const id = req.body.id;
 

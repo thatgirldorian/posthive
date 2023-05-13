@@ -18,6 +18,7 @@ export default function Index({ posts }) {
 
   if (session) {
     router.push("/home");
+    return;
   }
 
   return (

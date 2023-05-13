@@ -32,6 +32,7 @@ export default function Setup() {
           });
           session.user.name = name;
           router.push("/home");
+          return;
         }}
       >
         <div className="flex-1 mb-5">
