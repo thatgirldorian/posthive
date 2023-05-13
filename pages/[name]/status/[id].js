@@ -43,7 +43,7 @@ export default function SinglePost({ post, replies }) {
       )}
 
       <NewReply post={post} />
-      <Posts posts={replies} />
+      <Posts posts={replies} nolink={true} />
     </div>
   );
 }
