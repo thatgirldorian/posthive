@@ -3,6 +3,7 @@ import { getPost } from "lib/data.js";
 import prisma from "lib/prisma";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import NewReply from "components/NewReply";
 
 export default function SinglePost({ post }) {
   const { data: session, status } = useSession();
@@ -39,6 +40,8 @@ export default function SinglePost({ post }) {
           </a>
         </div>
       )}
+
+      <NewReply post={post} />
     </div>
   );
 }
