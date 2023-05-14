@@ -10,6 +10,10 @@ export default function SinglePost({ post, replies }) {
   const { data: session, status } = useSession();
   const router = useRouter();
 
+  if (typeof window !== "undefined" && post.parent) {
+    router.push(`/${post.author.name}/status/${post.parent}`);
+  }
+
   return (
     <div className="bg-white h-screen items-center justify-between px-24 pt-4">
       <Post post={post} />
