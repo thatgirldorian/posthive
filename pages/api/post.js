@@ -29,18 +29,17 @@ export default async function handler(req, res) {
     await prisma.post.create({
       data: {
         content: req.body.content,
+        parent: req.body.parent || null,
         author: {
           connect: { id: user.id },
         },
       },
     });
     res.end();
-    return;
   }
 
   if (req.method === "DELETE") {
     const id = req.body.id;
-
     const post = await prisma.post.findUnique({
       where: {
         id,
@@ -58,6 +57,7 @@ export default async function handler(req, res) {
     await prisma.post.delete({
       where: { id },
     });
+
     res.status(200).end();
     return;
   }
