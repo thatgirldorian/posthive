@@ -11,7 +11,7 @@ export default function SinglePost({ post, replies }) {
   const router = useRouter();
 
   if (typeof window !== "undefined" && post.parent) {
-    router.push(`/${post.author.name}/status/${post.parent}`);
+    router.push(`/${post.parent_data.author.name}/status/${post.parent}`);
   }
 
   return (
