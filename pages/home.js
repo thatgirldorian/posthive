@@ -39,7 +39,7 @@ export default function Home({ posts }) {
 }
 
 export async function getServerSideProps() {
-  let posts = await getPosts(prisma);
+  let posts = await getPosts(prisma, 5);
   posts = JSON.parse(JSON.stringify(posts));
 
   return {
