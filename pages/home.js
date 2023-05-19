@@ -4,8 +4,12 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import NewPost from "components/NewPost";
 import Posts from "components/Posts";
+import LoadMorePosts from "components/LoadMorePosts";
+import { useState } from "react";
 
-export default function Home({ posts }) {
+export default function Home({ initialPosts }) {
+  const [posts, setPosts] = useState(initialPosts);
+
   const { data: session, status } = useSession();
   const loading = status === "loading";
   const router = useRouter();
@@ -32,8 +36,9 @@ export default function Home({ posts }) {
     <div
       className={`bg-white min-h-screen flex-col items-center justify-between p-24 `}
     >
-      <NewPost />
+      <NewPost posts={posts} setPosts={setPosts} />
       <Posts posts={posts} />
+      <LoadMorePosts posts={posts} setPosts={setPosts} />
     </div>
   );
 }
@@ -45,6 +50,7 @@ export async function getServerSideProps() {
   return {
     props: {
       posts,
+      initialPosts: posts,
     },
   };
 }

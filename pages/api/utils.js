@@ -1,7 +1,7 @@
 import prisma from "lib/prisma";
 import { faker } from "@faker-js/faker";
 import { authOptions } from "./auth/[...nextauth]";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "next-auth/next";
 
 export default async function handler(req, res) {
   const session = await getServerSession(req, res, authOptions);

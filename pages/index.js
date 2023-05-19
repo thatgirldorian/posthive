@@ -5,6 +5,7 @@ import Posts from "components/Posts";
 import prisma from "lib/prisma";
 import { getPosts } from "lib/data.js";
 import Link from "next/link";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
