@@ -28,9 +28,9 @@ export default function Home({ initialPosts }) {
     router.push("/setup");
   }
 
-  // if (status === "loading") {
-  //   return <p>Loading...</p>;
-  // }
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div

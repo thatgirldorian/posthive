@@ -52,7 +52,6 @@ export default async function handler(req, res) {
 
   if (req.method === "DELETE") {
     const id = req.body.id;
-    console.log(id);
     const post = await prisma.post.findUnique({
       where: {
         id,
