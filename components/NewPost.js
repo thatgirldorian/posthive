@@ -2,7 +2,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function NewPost() {
+export default function NewPost({ posts, setPosts }) {
   const [content, setContent] = useState("");
   const { data: session } = useSession();
   const router = useRouter();
@@ -20,7 +20,7 @@ export default function NewPost() {
           return;
         }
 
-        await fetch("/api/post", {
+        const res = await fetch("/api/post", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -29,7 +29,11 @@ export default function NewPost() {
             content,
           }),
         });
-        router.reload(window.location.pathname);
+
+        const post = await res.json();
+        setPosts([post, ...posts]);
+        setContent("");
+        // router.reload(window.location.pathname);
       }}
     >
       <div className="flex">
@@ -40,6 +44,7 @@ export default function NewPost() {
             cols={50}
             placeholder="What's on your mind today?"
             name="content"
+            value={content}
             onChange={(e) => setContent(e.target.value)}
           />
         </div>

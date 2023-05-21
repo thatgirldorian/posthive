@@ -26,7 +26,7 @@ export default async function handler(req, res) {
   }
 
   if (req.method === "POST") {
-    await prisma.post.create({
+    const post = await prisma.post.create({
       data: {
         content: req.body.content,
         parent: req.body.parent || null,
@@ -35,6 +35,18 @@ export default async function handler(req, res) {
         },
       },
     });
+
+    const postWithAuthorData = await prisma.post.findUnique({
+      where: {
+        id: post.id,
+      },
+      include: {
+        author: true,
+      },
+    });
+
+    res.json(postWithAuthorData);
+
     res.end();
   }
 
