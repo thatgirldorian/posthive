@@ -49,7 +49,7 @@ export default function NewPost({ posts, setPosts }) {
 
       <div className="flex">
         <div className="flex-1 my-4">
-          <button className="border float-right px-8 py-2 mt-0 mr-2 font-bold rounded-full">
+          <button className="float-right px-8 py-2 mt-0 mr-2 font-bold rounded-full bg-[#00ebc7] text-[#00214d]">
             Post
           </button>
         </div>

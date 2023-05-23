@@ -21,7 +21,7 @@ export default function Post({ post, nolink }) {
             <div className="ml-3 -mt-6">
               <p>
                 <Link href={`/${post.author.name}`}>
-                  <span className="text-base font-medium leading-6 color-primary hover:underline">
+                  <span className="text-base font-medium leading-6 text-[#00214d] hover:underline">
                     {post.author.name}{" "}
                   </span>
                 </Link>
@@ -46,7 +46,7 @@ export default function Post({ post, nolink }) {
         </div>
       </div>
       <div className="pl-16 -mt-6">
-        <p className="flex-shrink pl-1 pr-2 text-base font-normal color-primary width-auto">
+        <p className="flex-shrink pl-1 pr-2 text-base font-normal text-[#1b2d45] width-auto">
           {post.content}
         </p>
       </div>

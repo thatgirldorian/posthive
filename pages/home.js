@@ -34,8 +34,8 @@ export default function Home({ initialPosts }) {
 
   return (
     <div>
-      <header className="sticky top-0 z-50 bg-blue-600 text-white py-4 px-12 mb-10">
-        <h1 className="text-3xl font-bold">posthive.</h1>
+      <header className="sticky top-0 z-50 bg-white text-white py-4 px-12 mb-10">
+        <h1 className="text-3xl text-[#00214d] font-bold">posthive.</h1>
       </header>
       <div
         className={`bg-white min-h-screen flex-col items-center justify-between px-10`}
