@@ -27,7 +27,7 @@ export default function Index({ posts }) {
         <Posts posts={posts.slice(0, 3)} />
         <div className="text-center py-10 border">
           <h2 className="mb-10 font-medium text-[18px]">
-            Join all the cool conversations!
+            Join all the cool conversations today!
           </h2>
           <a
             className="border-[1px] px-8 py-2 font-bold rounded-full color-accent-contrast bg-color-accent hover:bg-color-accent-hover-darker"
