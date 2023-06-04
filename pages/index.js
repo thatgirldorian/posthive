@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Posts from "components/Posts";
 import prisma from "lib/prisma";
 import { getPosts } from "lib/data.js";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,12 +30,12 @@ export default function Index({ posts }) {
           <h2 className="mb-10 font-medium text-[18px]">
             Join all the cool conversations today!
           </h2>
-          <a
+          <Link
             className="border-[1px] px-8 py-2 font-bold rounded-full color-accent-contrast bg-color-accent hover:bg-color-accent-hover-darker"
             href="/api/auth/signin"
           >
             Login
-          </a>
+          </Link>
         </div>
       </div>
     </main>
