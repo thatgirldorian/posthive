@@ -25,7 +25,7 @@ export default function Index({ posts }) {
       className={` bg-white min-h-screen flex-col items-center justify-between py-24 px-12 ${inter.className}`}
     >
       <div className="mt-10">
-        <Posts posts={posts.slice(0, 3)} />
+        <Posts posts={posts} />
         <div className="text-center py-10 border">
           <h2 className="mb-10 font-medium text-[18px]">
             Join all the cool conversations today!
@@ -43,7 +43,8 @@ export default function Index({ posts }) {
 }
 
 export async function getServerSideProps() {
-  let posts = await getPosts(prisma);
+  const take = 3;
+  let posts = await getPosts(prisma, take);
   posts = JSON.parse(JSON.stringify(posts));
 
   return {
