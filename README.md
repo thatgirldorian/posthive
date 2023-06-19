@@ -1,6 +1,6 @@
 # posthive
 
-
+Posthive is a web application that lets people share text-based posts. You can create an account, post on a central feed, delete posts, and reply to posts as well.
 
 <h3>Issues faced & resolution:</h3>
 
@@ -9,18 +9,17 @@
 <h3>Technology used:</h3>
 
 - React JS
-- Redux
-- React Router
-- Google Oauth + Google API library
-- The JSON Server package
-- RESTful APIs
-- Node Media Server (a Node JS implementation of RTMP)
-- OBS Project (open source software for video recording + live streaming)
+- Next JS
+- Tailwind CSS,
+- NextAuth.js
+- Prisma
+- Mailtrap.io
+  
 
 
 <h3>Screenshare:</h3>
 
-
+(add a screen share here)
 
 
 
