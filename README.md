@@ -1,3 +1,33 @@
+# posthive
+
+
+
+<h3>Issues faced & resolution:</h3>
+
+- I'm currently running into an error when I attempt to delete a post. Trying to fix this.
+
+<h3>Technology used:</h3>
+
+- React JS
+- Redux
+- React Router
+- Google Oauth + Google API library
+- The JSON Server package
+- RESTful APIs
+- Node Media Server (a Node JS implementation of RTMP)
+- OBS Project (open source software for video recording + live streaming)
+
+
+<h3>Screenshare:</h3>
+
+
+
+
+
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
