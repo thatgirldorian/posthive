@@ -1,3 +1,32 @@
+# posthive
+
+Posthive is a web application that lets people share text-based posts. You can create an account, post on a central feed, delete posts, and reply to posts as well.
+
+<h3>Issues faced & resolution:</h3>
+
+- I'm currently running into an error when I attempt to delete a post. Trying to fix this.
+
+<h3>Technology used:</h3>
+
+- React JS
+- Next JS
+- Tailwind CSS,
+- NextAuth.js
+- Prisma
+- Mailtrap.io
+  
+
+
+<h3>Screenshare:</h3>
+
+(add a screen share here)
+
+
+
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
